@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Shopping Website</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #loginBox {
+            background-color: lightblue;
+            width: 300px;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        #shoppingBox {
+            background-color: lightyellow;
+            width: 400px;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 8px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #message, #searchResult,
+        #cartMessage, #checkoutMessage {
+            margin: 10px;
+            font-weight: bold;
+            color: green;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Online Shopping Store</h1>
+
+    <!-- Login Section -->
+
+    <div id="loginBox">
+
+        <h2>Student Login</h2>
+
+        <input type="text" id="username"
+               placeholder="Enter Username">
+
+        <input type="password" id="password"
+               placeholder="Enter Password">
+
+        <button id="loginButton" onclick="login()">
+            Login
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+
+    <!-- Shopping Section -->
+
+    <div id="shoppingBox">
+
+        <h2>Product Shopping</h2>
+
+        <h3>Available Product: Laptop</h3>
+
+        <input type="text" id="searchBox"
+               placeholder="Search Product">
+
+        <button id="searchButton" onclick="searchProduct()">
+            Search
+        </button>
+
+        <div id="searchResult"></div>
+
+        <hr>
+
+        <h3>Laptop - Rs. 50,000</h3>
+
+        <button id="addToCartButton" onclick="addToCart()">
+            Add to Cart
+        </button>
+
+        <div id="cartMessage"></div>
+
+        <h3>Cart Items: <span id="cartCount">0</span></h3>
+
+        <button id="checkoutButton" onclick="checkout()">
+            Checkout
+        </button>
+
+        <div id="checkoutMessage"></div>
+
+    </div>
+
+
+    <script>
+
+        // Login Function
+        function login() {
+
+            var username =
+                document.getElementById("username").value;
+
+            var password =
+                document.getElementById("password").value;
+
+            if (username === "student" && password === "12345") {
+
+                document.getElementById("message").innerText =
+                    "Login Successful";
+
+            } else {
+
+                document.getElementById("message").innerText =
+                    "Invalid Username or Password";
+            }
+        }
+
+
+        // Product Search Function
+        function searchProduct() {
+
+            var product =
+                document.getElementById("searchBox").value;
+
+            if (product.toLowerCase() === "laptop") {
+
+                document.getElementById("searchResult").innerText =
+                    "Laptop Found";
+
+            } else {
+
+                document.getElementById("searchResult").innerText =
+                    "Product Not Found";
+            }
+        }
+
+
+        // Add to Cart Function
+        var cart = 0;
+
+        function addToCart() {
+
+            cart++;
+
+            document.getElementById("cartCount").innerText =
+                cart;
+
+            document.getElementById("cartMessage").innerText =
+                "Product Added to Cart";
+        }
+
+
+        // Checkout Function
+        function checkout() {
+
+            if (cart > 0) {
+
+                document.getElementById("checkoutMessage").innerText =
+                    "Order Placed Successfully";
+
+                cart = 0;
+
+                document.getElementById("cartCount").innerText =
+                    cart;
+
+            } else {
+
+                document.getElementById("checkoutMessage").innerText =
+                    "Cart is Empty";
+            }
+        }
+
+    </script>
+
+</body>
+</html>
